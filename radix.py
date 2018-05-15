@@ -86,7 +86,6 @@ def radixsort(unsortedlist, size):
             while not queuelist[i].isEmpty():
                 dequeued = queuelist[i].dequeue()
                 mainQueue.enqueue(dequeued)
-                print(dequeued)
 
     while not mainQueue.isEmpty():
         finallist.append(mainQueue.dequeue().strip())
@@ -97,7 +96,6 @@ def radixsort(unsortedlist, size):
 def main():
     unsortedlst = ['aaa', 'abc', 'aa', 'cc', 'cba', 'zzz']
     sorted = radixsort(unsortedlst, len(unsortedlst))
-    print(sorted)
 
 
 if __name__ == '__main__':
