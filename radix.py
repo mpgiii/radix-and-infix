@@ -76,14 +76,17 @@ def radixsort(unsortedlist, size):
     for j in range(256):
         queuelist.append(Queue())
 
-    for w in range(longest - 1, 0, -1):
-        string = mainQueue.dequeue()
-        spot = ord(charAt(string, w))
-        queuelist[spot].enqueue(string)
+    for w in range(longest, -1, -1):
+        while not mainQueue.isEmpty():
+            string = mainQueue.dequeue()
+            spot = ord(charAt(string, w))
+            queuelist[spot].enqueue(string)
 
-    for i in range(256):
-        while not queuelist[i].isEmpty():
-            mainQueue.enqueue(queuelist[i].dequeue())
+        for i in range(256):
+            while not queuelist[i].isEmpty():
+                dequeued = queuelist[i].dequeue()
+                mainQueue.enqueue(dequeued)
+                print(dequeued)
 
     while not mainQueue.isEmpty():
         finallist.append(mainQueue.dequeue().strip())
